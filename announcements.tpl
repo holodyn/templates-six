@@ -3,10 +3,10 @@
     <div class="announcement-single">
 
         <h2>
+            <a href="{if $seofriendlyurls}{$WEB_ROOT}/announcements/{$announcement.id}/{$announcement.urlfriendlytitle}.html{else}{$smarty.server.PHP_SELF}?id={$announcement.id}{/if}">{$announcement.title}</a>
             <span class="label label-default">
                 {"M jS"|date:$announcement.timestamp}
             </span>
-            <a href="{if $seofriendlyurls}{$WEB_ROOT}/announcements/{$announcement.id}/{$announcement.urlfriendlytitle}.html{else}{$smarty.server.PHP_SELF}?id={$announcement.id}{/if}">{$announcement.title}</a>
         </h2>
 
         <blockquote>

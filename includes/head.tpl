@@ -5,12 +5,11 @@
 <!-- Styling -->
 <link href="{$WEB_ROOT}/templates/{$template}/css/overrides.css" rel="stylesheet">
 <link href="{$WEB_ROOT}/templates/{$template}/css/styles.css" rel="stylesheet">
+<link href="{$WEB_ROOT}/templates/{$template}/css/custom.css" rel="stylesheet">
 
 <!-- jQuery -->
 <script src="{$BASE_PATH_JS}/jquery.min.js"></script>
-
-<!-- Custom Styling -->
-<link rel="stylesheet" href="{$WEB_ROOT}/templates/{$template}/css/custom.css">
+<script src="{$WEB_ROOT}/templates/{$template}/js/custom.js"></script>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

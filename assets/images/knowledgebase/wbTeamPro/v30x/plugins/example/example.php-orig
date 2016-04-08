@@ -1,0 +1,172 @@
+<?php
+
+/**
+
+  Webuddha wbTeamPro
+  (c)2010 Webuddha.com, The Holodyn Corporation - All Rights Reserved
+
+**/
+
+// ********************************************************************
+// Check Valid Access
+// ********************************************************************
+
+  defined('WHMCS_ADMIN') or defined('WHMCS_CLIENT') or die('Invalid Access');
+
+// ********************************************************************
+// Plugin Class
+// ********************************************************************
+
+  class wbTeamPro_Plugin_Example extends wbTeamPro_Plugin {
+
+    /******************************************************************************
+      PUBLIC FUNCTIONS
+    *******************************************************************************/
+
+    //---------------------------------------------------------------------------
+    // Class Constructor
+    //---------------------------------------------------------------------------
+    function __construct( $extension ){
+
+      // Import Plugin Language
+      wbTeamPro_Lang::import( dirname(__FILE__).DS.'lang'.DS );
+
+      // Initialize Plugin
+      parent::__construct( $extension );
+
+    }
+
+    //---------------------------------------------------------------------------
+    // System Event Functions
+    //---------------------------------------------------------------------------
+    function system_onRunCron( &$data, &$params ){}
+
+    //---------------------------------------------------------------------------
+    // Table Event Functions
+    //---------------------------------------------------------------------------
+    function table_onAfterStore_Project( &$data, &$params ){
+
+      // Return TRUE to continue (default)
+      return true;
+
+      // You can inspect the class & data
+      wbTeamPro_Common::inspect('table_onAfterStore_Project Event', $this, $data, $params); die('ABORT');
+
+      // You can modify the recently stored object
+      $openProject =& $data['openProject'];
+      if( strpos($openProject->project_name, '*Example Plugin*') === false ){
+        // Set the active object for use by following operations
+        $openProject->project_name = $openProject->project_name . ' ** Example Plugin';
+        // Store your changes (Within the store function you must save directly)
+        $openProject->_dbh->runQuery("
+          UPDATE `".$openProject->_tbl."`
+          SET `project_name` = '". $openProject->_dbh->getEscaped($openProject->project_name) ."'
+          WHERE `project_id` = '". $openAction->_dbh->getEscaped($openProject->project_id) ."'
+          LIMIT 1
+          ");
+      }
+
+    }
+    function table_onBeforeDelete_Project( &$data, &$params ){
+
+      // Return TRUE to continue (default)
+      return true;
+
+      // You can inspect the class & data
+      wbTeamPro_Common::inspect('table_onBeforeDelete_Project Event', $this, $data, $params); die('ABORT');
+
+      // Assign a Message and Return FALSE to abort
+      $data['openProject']->setError( wbTeamPro_Lang::_('plugin_example.deleteCancel','Delete Cancelled by Example Plugin') );
+      return false;
+
+    }
+    function table_onAfterCopy_Project( &$data, &$params ){}
+    function table_onAfterStore_Action( &$data, &$params ){}
+    function table_onBeforeDelete_Action( &$data, &$params ){}
+    function table_onAfterStore_Topic( &$data, &$params ){}
+    function table_onBeforeDelete_Topic( &$data, &$params ){}
+    function table_onAfterStore_File( &$data, &$params ){}
+    function table_onBeforeDelete_File( &$data, &$params ){}
+    function table_onAfterStore_TicketXref( &$data, &$params ){}
+    function table_onBeforeDelete_TicketXref ( &$data, &$params ){}
+    function table_onAfterStore_Timelog( &$data, &$params ){}
+    function table_onBeforeDelete_Timelog( &$data, &$params ){}
+
+    //---------------------------------------------------------------------------
+    // Client Event Functions
+    //---------------------------------------------------------------------------
+    function client_onInitialize( &$data, &$params ){}
+    function client_onPrepareView( &$data, &$params ){}
+    function client_onBeforeLoadTask( &$data, &$params ){}
+    function client_onAfterLoadTask( &$data, &$params ){}
+    function client_onFinalizeView( &$data, &$params ){}
+    function client_onHeaderOutput( &$data, &$params ){}
+    function client_onAfterStore_Action( &$data, &$params ){}
+    function client_onAfterStore_File( &$data, &$params ){}
+    function client_onAfterStore_Topic( &$data, &$params ){}
+
+    //---------------------------------------------------------------------------
+    // Admin Event Functions
+    //---------------------------------------------------------------------------
+    function admin_onInitialize( &$data, &$params ){}
+    function admin_onPrepareView( &$data, &$params ){}
+    function admin_onBeforeLoadTask( &$data, &$params ){}
+    function admin_onAfterLoadTask( &$data, &$params ){}
+    function admin_onFinalizeView( &$data, &$params ){}
+    function admin_onHeaderOutput( &$data, &$params ){}
+    function admin_onDuringRender_ProjectEditForm( &$data, &$params ){}
+    function admin_onAfterStore_Project( &$data, &$params ){}
+    function admin_onAfterStore_Action( &$data, &$params ){}
+    function admin_onAfterStore_File( &$data, &$params ){}
+    function admin_onAfterStore_Topic( &$data, &$params ){}
+    function admin_onRenderTicketProjectTabForm( &$data, &$params ){}
+    function admin_onAfterStore_TicketXref( &$data, &$params ){}
+
+    //---------------------------------------------------------------------------
+    // Plugin Management Functions
+    //---------------------------------------------------------------------------
+    function admin_onDuringRender_PluginEditForm( &$data, &$params ){
+
+      // Localize the Extension Data
+      $ext_data = $data['extension']['extension_data'];
+
+      // Render a form on the Plugin Edit Form
+      ?>
+      <h2><?php echo wbTeamPro_Lang::_('plugin_example.dataStorage.header') ?></h2>
+      <table class="form" width="100%" border="0" cellspacing="2" cellpadding="3">
+        <tr>
+          <td class=fieldlabel width="15%"><?php echo wbTeamPro_Lang::_('plugin_example.dataStorage.example1-def') ?>:</td>
+          <td class=fieldarea><input type="text" name="extension_data[example1]" value="<?php echo htmlspecialchars($ext_data['example1']) ?>" style="width:99%;" ></td>
+          <td class="fieldlabel desc"><?php echo wbTeamPro_Lang::_('plugin_example.dataStorage.example1-desc') ?></td>
+        </tr>
+        <tr>
+          <td class=fieldlabel width="15%"><?php echo wbTeamPro_Lang::_('plugin_example.dataStorage.example2-def') ?></td>
+          <td class=fieldarea width="35%"><input type="text" name="extension_data[example2]" value="<?php echo htmlspecialchars($ext_data['example2']) ?>" style="width:99%;" ></td>
+          <td class="fieldlabel desc"><?php echo wbTeamPro_Lang::_('plugin_example.dataStorage.example1-desc') ?></td>
+        </tr>
+      </table>
+      <?php
+
+    }
+    function admin_onAfterSave_PluginEditForm( &$data, &$params ){
+
+      // Overwrite the Extension Data
+      $this->extension->extension_data->example1 = 'Test Value Overwrite';
+
+      // Store the extension data changes
+      $this->extension->store();
+
+    }
+
+    //---------------------------------------------------------------------------
+    // Plugin Management Functions
+    //---------------------------------------------------------------------------
+    function plugin_onBeforeUninstall( &$data, &$params ){
+
+      // Example of how to prevent uninstall
+      $data['openExtension']->setError('Cannot Uninstall Example Plugin');
+      return false;
+
+    }
+
+  }

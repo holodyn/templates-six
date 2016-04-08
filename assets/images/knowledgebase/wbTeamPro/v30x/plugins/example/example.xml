@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="1.0" zone="admin" method="install">
+  <name>plugin_example.xml_name</name>
+  <author>Webuddha, Holodyn, Inc.</author>
+  <created>2013-01-01</created>
+  <version>3.0.0</version>
+  <description>plugin_example.xml_description</description>
+  <files>
+    <file>example.php</file>
+    <file>example.xml</file>
+  </files>
+  <params>
+    <param
+      type="text"
+      name="example_text"
+      default="0"
+      label="plugin_example.params.example_text-def"
+      description="plugin_example.params.example_text-desc"
+      />
+    <param
+      type="selectlist"
+      name="example_selectlist"
+      default="0"
+      label="plugin_example.params.example_selectlist-def"
+      description="plugin_example.params.example_selectlist-desc"
+      >
+      <option value="0">plugin_example.params.opt_no</option>
+      <option value="1">plugin_example.params.opt_yes</option>
+    </param>
+    <param
+      type="radiolist"
+      name="example_radiolist"
+      default="0"
+      label="plugin_example.params.example_radiolist-def"
+      description="plugin_example.params.example_radiolist-desc"
+      >
+      <option value="0">plugin_example.params.opt_no</option>
+      <option value="1">plugin_example.params.opt_yes</option>
+    </param>
+    <param
+      type="checklist"
+      name="example_checklist"
+      default="1"
+      label="plugin_example.params.example_checklist-def"
+      description="plugin_example.params.example_checklist-desc"
+      >
+      <option value="0">plugin_example.params.opt_no</option>
+      <option value="1">plugin_example.params.opt_yes</option>
+    </param>
+    <param
+      type="textarea"
+      name="example_textarea"
+      default=""
+      label="plugin_example.params.example_textarea-def"
+      description="plugin_example.params.example_textarea-desc"
+      />
+  </params>
+</extension>

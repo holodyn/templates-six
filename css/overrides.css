@@ -79,7 +79,7 @@ h6 {
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 768px) {
     .navbar-header {
         float: none;
     }
@@ -160,9 +160,9 @@ input[type='file'].form-control {
     padding: 10px 15px;
 }
 
-/* 
- * We use a larger font-size than the bootstrap default, which requires an increase 
- * in the top offset to maintain correct alignment in form control feedback. 
+/*
+ * We use a larger font-size than the bootstrap default, which requires an increase
+ * in the top offset to maintain correct alignment in form control feedback.
  */
 .has-feedback label ~ .form-control-feedback {
     top: 27px !important;
