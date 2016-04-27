@@ -73,9 +73,15 @@
                     </div>
                 </div>
             {/if}
+
             <!-- Shopping Cart -->
             <div class="pull-right nav">
                 <a href="{$WEB_ROOT}/cart.php?a=view" class="quick-nav"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">{$LANG.viewcart} (</span><span id="cartItemCount">{$cartitemcount}</span><span class="hidden-xs">)</span></a>
+            </div>
+
+            <!-- Phone -->
+            <div class="pull-right nav">
+                <a href="tel:6787999855" class="quick-nav"><i class="fa fa-phone"></i> 678-799-9855</a>
             </div>
 
             {if $adminMasqueradingAsClient}
@@ -171,7 +177,8 @@
                             </a>
                         </li>
                         <li>
-                            <a id="btnDocs" href="//docs.holodyn.com/Welcome" target="_blank">
+                            <!-- //docs.holodyn.com/Welcome -->
+                            <a id="btnDocs" href="/knowledgebase/21/Software-Documentation" target="_blank">
                                 <i class="fa fa-book"></i>
                                 <p>
                                     Help Documents
