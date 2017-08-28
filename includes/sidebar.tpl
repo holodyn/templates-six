@@ -1,10 +1,11 @@
 {foreach $sidebar as $item}
-    <div menuItemName="{$item->getName()}" class="panel {if $item->getClass()}{$item->getClass()}{else}panel-default{/if}{if $item->getExtra('mobileSelect') and $item->hasChildren()} hidden-sm hidden-xs{/if}"{if $item->getAttribute('id')} id="{$item->getAttribute('id')}"{/if}>
+    <div menuItemName="{$item->getName()}" class="panel panel-sidebar {if $item->getClass()}{$item->getClass()}{else}panel-sidebar{/if}{if $item->getExtra('mobileSelect') and $item->hasChildren()} hidden-sm hidden-xs{/if}"{if $item->getAttribute('id')} id="{$item->getAttribute('id')}"{/if}>
         <div class="panel-heading">
             <h3 class="panel-title">
                 {if $item->hasIcon()}<i class="{$item->getIcon()}"></i>&nbsp;{/if}
                 {$item->getLabel()}
                 {if $item->hasBadge()}&nbsp;<span class="badge">{$item->getBadge()}</span>{/if}
+                <i class="fa fa-chevron-up panel-minimise pull-right"></i>
             </h3>
         </div>
         {if $item->hasBodyHtml()}
@@ -17,15 +18,15 @@
                 {foreach $item->getChildren() as $childItem}
                     {if $childItem->getUri()}
                         <a menuItemName="{$childItem->getName()}" href="{$childItem->getUri()}" class="list-group-item{if $childItem->isDisabled()} disabled{/if}{if $childItem->getClass()} {$childItem->getClass()}{/if}{if $childItem->isCurrent()} active{/if}"{if $childItem->getAttribute('dataToggleTab')} data-toggle="tab"{/if}{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if} id="{$childItem->getId()}">
+                            {if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
                             {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
                             {$childItem->getLabel()}
-                            {if $childItem->hasBadge()}&nbsp;<span class="badge">{$childItem->getBadge()}</span>{/if}
                         </a>
                     {else}
                         <div menuItemName="{$childItem->getName()}" class="list-group-item{if $childItem->getClass()} {$childItem->getClass()}{/if}" id="{$childItem->getId()}">
+                            {if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
                             {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
                             {$childItem->getLabel()}
-                            {if $childItem->hasBadge()}&nbsp;<span class="badge">{$childItem->getBadge()}</span>{/if}
                         </div>
                     {/if}
                 {/foreach}

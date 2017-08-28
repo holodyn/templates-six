@@ -4,11 +4,13 @@
 
     {if $incorrect}
         {include file="$template/includes/alert.tpl" type="error" msg=$LANG.loginincorrect textcenter=true}
+    {elseif $verificationId && empty($transientDataName)}
+        {include file="$template/includes/alert.tpl" type="error" msg=$LANG.verificationKeyExpired textcenter=true}
     {elseif $ssoredirect}
         {include file="$template/includes/alert.tpl" type="info" msg=$LANG.sso.redirectafterlogin textcenter=true}
     {/if}
 
-    <form method="post" action="{$systemsslurl}dologin.php" role="form">
+    <form method="post" action="{$systemurl}dologin.php" role="form">
         <div class="form-group">
             <label for="inputEmail">{$LANG.clientareaemail}</label>
             <input type="email" name="username" class="form-control" id="inputEmail" placeholder="{$LANG.enteremail}" autofocus>
@@ -16,7 +18,7 @@
 
         <div class="form-group">
             <label for="inputPassword">{$LANG.clientareapassword}</label>
-            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="{$LANG.clientareapassword}">
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="{$LANG.clientareapassword}" autocomplete="off" >
         </div>
 
         <div class="checkbox">

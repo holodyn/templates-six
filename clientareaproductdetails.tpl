@@ -39,15 +39,15 @@
                         {if $showcancelbutton || $packagesupgrade}
                             <div class="row">
                                 {if $packagesupgrade}
-                                    <div class="col-xs-6">
+                                    <div class="col-xs-{if $showcancelbutton}6{else}12{/if}">
                                         <a href="upgrade.php?type=package&amp;id={$id}" class="btn btn-block btn-success">{$LANG.upgrade}</a>
                                     </div>
-                                    <div class="col-xs-6">
-                                {else}
-                                    <div class="col-xs-12">
                                 {/if}
-                                    <a href="clientarea.php?action=cancel&amp;id={$id}" class="btn btn-block btn-danger {if $pendingcancellation}disabled{/if}">{if $pendingcancellation}{$LANG.cancellationrequested}{else}{$LANG.clientareacancelrequestbutton}{/if}</a>
-                                </div>
+                                {if $showcancelbutton}
+                                    <div class="col-xs-{if $packagesupgrade}6{else}12{/if}">
+                                        <a href="clientarea.php?action=cancel&amp;id={$id}" class="btn btn-block btn-danger {if $pendingcancellation}disabled{/if}">{if $pendingcancellation}{$LANG.cancellationrequested}{else}{$LANG.clientareacancelrequestbutton}{/if}</a>
+                                    </div>
+                                {/if}
                             </div>
                         {/if}
 
@@ -339,19 +339,28 @@
         <div class="row">
             {foreach from=$addons item=addon}
                 <div class="col-xs-10 col-xs-offset-1">
-                    <h4>{$addon.name}</h4>
-                    <p>
-                        {$addon.pricing}
-                    </p>
-                    <p>
-                        {$LANG.registered}: {$addon.regdate}
-                    </p>
-                    <p>
-                        {$LANG.clientareahostingnextduedate}: {$addon.nextduedate}
-                    </p>
-                    <p>
-                        <span class="label status-{$addon.status|strtolower}">{$addon.status}</span>
-                    </p>
+                    <div class="panel panel-default panel-accent-blue">
+                        <div class="panel-heading">
+                            {$addon.name}
+                            <div class="pull-right status-{$addon.rawstatus|strtolower}">{$addon.status}</div>
+                        </div>
+                        <div class="row panel-body">
+                            <div class="col-md-6">
+                                <p>
+                                    {$addon.pricing}
+                                </p>
+                                <p>
+                                    {$LANG.registered}: {$addon.regdate}
+                                </p>
+                                <p>
+                                    {$LANG.clientareahostingnextduedate}: {$addon.nextduedate}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            {$addon.managementActions}
+                        </div>
+                    </div>
                 </div>
             {/foreach}
         </div>
@@ -376,7 +385,7 @@
             <div id="newPassword1" class="form-group has-feedback">
                 <label for="inputNewPassword1" class="col-sm-5 control-label">{$LANG.newpassword}</label>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control" id="inputNewPassword1" name="newpw" />
+                    <input type="password" class="form-control" id="inputNewPassword1" name="newpw" autocomplete="off" />
                     <span class="form-control-feedback glyphicon"></span>
                     {include file="$template/includes/pwstrength.tpl"}
                 </div>
@@ -384,7 +393,7 @@
             <div id="newPassword2" class="form-group has-feedback">
                 <label for="inputNewPassword2" class="col-sm-5 control-label">{$LANG.confirmnewpassword}</label>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control" id="inputNewPassword2" name="confirmpw" />
+                    <input type="password" class="form-control" id="inputNewPassword2" name="confirmpw" autocomplete="off" />
                     <span class="form-control-feedback glyphicon"></span>
                     <div id="inputNewPassword2Msg">
                     </div>

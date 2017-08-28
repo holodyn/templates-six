@@ -7,11 +7,12 @@
 <h2>{$kbarticle.title}</h2>
 
 {if $kbarticle.voted}
-    {include file="$template/includes/alert.tpl" type="success" msg="{lang key="knowledgebaseArticleRatingThanks"}" textcenter=true}
+    {include file="$template/includes/alert.tpl" type="success alert-bordered-left" msg="{lang key="knowledgebaseArticleRatingThanks"}" textcenter=true}
 {/if}
 
-<blockquote>
+<div class="kb-article-content">
     {$kbarticle.text}
+<<<<<<< HEAD
 </blockquote>
 <div class="hidden-print">
     {if $announcementsFbRecommend}
@@ -99,20 +100,41 @@
             </div>
         </div>
     </div>
+=======
+</div>
+
+<ul class="kb-article-details">
+    <li><i class="fa fa-tag"></i> Email, SSL</li>
+    <li><i class="fa fa-star"></i> {$kbarticle.useful} {$LANG.knowledgebaseratingtext}</li>
+</ul>
+<div class="clearfix"></div>
+
+<div class="kb-rate-article hidden-print">
+    <form action="{routePath('knowledgebase-article-view', {$kbarticle.id}, {$kbarticle.urlfriendlytitle})}" method="post">
+        <input type="hidden" name="useful" value="vote">
+        {if $kbarticle.voted}{$LANG.knowledgebaserating}{else}{$LANG.knowledgebasehelpful}{/if}
+        {if $kbarticle.voted}
+            {$kbarticle.useful} {$LANG.knowledgebaseratingtext} ({$kbarticle.votes} {$LANG.knowledgebasevotes})
+        {else}
+            <button type="submit" name="vote" value="yes" class="btn btn-lg btn-link"><i class="fa fa-thumbs-o-up"></i> {$LANG.knowledgebaseyes}</button>
+            <button type="submit" name="vote" value="no" class="btn btn-lg btn-link"><i class="fa fa-thumbs-o-down"></i> {$LANG.knowledgebaseno}</button>
+        {/if}
+    </form>
+>>>>>>> v7.2.3-release.1
 </div>
 
 {if $kbarticles}
-    <h3 class="kb-alsoread">
-        {$LANG.knowledgebasealsoread}
-    </h3>
-    <div class="kbarticles">
-        {foreach key=num item=kbarticle from=$kbarticles}
-            <div>
-                <a href="{if $seofriendlyurls}{$WEB_ROOT}/knowledgebase/{$kbarticle.id}/{$kbarticle.urlfriendlytitle}.html{else}knowledgebase.php?action=displayarticle&amp;id={$kbarticle.id}{/if}">
-                    <i class="glyphicon glyphicon-file"></i> {$kbarticle.title}
-                </a>
-                <p>{$kbarticle.article|truncate:100:"..."}</p>
-            </div>
-        {/foreach}
+    <div class="kb-also-read">
+        <h3>Related Articles</h3>
+        <div class="kbarticles">
+            {foreach key=num item=kbarticle from=$kbarticles}
+                <div>
+                    <a href="{routePath('knowledgebase-article-view', {$kbarticle.id}, {$kbarticle.urlfriendlytitle})}">
+                        <i class="glyphicon glyphicon-file"></i> {$kbarticle.title}
+                    </a>
+                    <p>{$kbarticle.article|truncate:100:"..."}</p>
+                </div>
+            {/foreach}
+        </div>
     </div>
 {/if}

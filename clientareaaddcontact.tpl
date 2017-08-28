@@ -7,18 +7,22 @@ var stateNotRequired = true;
 </script>
 <script type="text/javascript" src="{$BASE_PATH_JS}/StatesDropdown.js"></script>
 
-<div class="alert alert-block alert-info text-center">
-    <form class="form-inline" role="form" method="post" action="{$smarty.server.PHP_SELF}?action=contacts">
-        <div class="form-group">
-            <label for="inputContactID">{$LANG.clientareachoosecontact}</label>
-            <select name="contactid" id="inputContactID" onchange="submit()" class="form-control">
-                {foreach item=contact from=$contacts}
-                    <option value="{$contact.id}">{$contact.name} - {$contact.email}</option>
-                {/foreach}
-                <option value="new" selected="selected">{$LANG.clientareanavaddcontact}</option>
-            </select>
+<div class="alert alert-block alert-info">
+    <form class="form-horizontal" role="form" method="post" action="{$smarty.server.PHP_SELF}?action=contacts">
+        <div class="row">
+            <label for="inputContactId" class="col-sm-3 control-label">{$LANG.clientareachoosecontact}</label>
+            <div class="col-sm-6">
+                <select name="contactid" id="inputContactId" onchange="submit()" class="form-control">
+                    {foreach item=contact from=$contacts}
+                        <option value="{$contact.id}">{$contact.name} - {$contact.email}</option>
+                    {/foreach}
+                    <option value="new" selected="selected">{$LANG.clientareanavaddcontact}</option>
+                </select>
+            </div>
+            <div class="col-sm-2 hidden-xs">
+                <button type="submit" class="btn btn-default btn-block">{$LANG.go}</button>
+            </div>
         </div>
-        <button type="submit" class="btn btn-default">{$LANG.go}</button>
     </form>
 </div>
 
@@ -117,7 +121,7 @@ var stateNotRequired = true;
             <div id="newPassword1" class="form-group has-feedback">
                 <label for="inputNewPassword1" class="col-sm-5 control-label">{$LANG.newpassword}</label>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control" id="inputNewPassword1" name="password" />
+                    <input type="password" class="form-control" id="inputNewPassword1" name="password" autocomplete="off" />
                     <span class="form-control-feedback glyphicon"></span>
                     {include file="$template/includes/pwstrength.tpl" noDisable=true}
                 </div>
@@ -125,7 +129,7 @@ var stateNotRequired = true;
             <div id="newPassword2" class="form-group has-feedback">
                 <label for="inputNewPassword2" class="col-sm-5 control-label">{$LANG.confirmnewpassword}</label>
                 <div class="col-sm-6">
-                    <input type="password" class="form-control" id="inputNewPassword2" name="password2" />
+                    <input type="password" class="form-control" id="inputNewPassword2" name="password2" autocomplete="off" />
                     <span class="form-control-feedback glyphicon"></span>
                     <div id="inputNewPassword2Msg">
                     </div>

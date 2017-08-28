@@ -6,10 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{$requestedAction} - {$companyname}</title>
 
-    <link href="{$BASE_PATH_CSS}/bootstrap.min.css" rel="stylesheet">
-    <link href="{$BASE_PATH_CSS}/font-awesome.min.css" rel="stylesheet">
-    <link href="{$WEB_ROOT}/templates/{$template}/css/overrides.css" rel="stylesheet">
-    <link href="{$WEB_ROOT}/templates/{$template}/css/styles.css" rel="stylesheet">
+    <link href="{$WEB_ROOT}/templates/{$template}/css/all.min.css" rel="stylesheet">
     <link href="{$WEB_ROOT}/templates/{$template}/css/custom.css" rel="stylesheet" >
     <link href="{$WEB_ROOT}/templates/{$template}/oauth/css/style.css" rel="stylesheet">
 
@@ -31,8 +28,8 @@
                         <input type="hidden" name="logout" value="1"/>
                         <input type="hidden" name="request_hash" value="{$request_hash}"/>
                         <p>
-                            You are currently logged in as {$loggedinuser.firstname} {$loggedinuser.lastname}.
-                            <a href="#" onclick="jQuery('#frmLogout').submit()">Not you?</a>
+                            {lang key='oauth.currentlyLoggedInAs' firstName=$loggedinuser.firstname lastName=$loggedinuser.lastname}.
+                            <a href="#" onclick="jQuery('#frmLogout').submit()">{lang key='oauth.notYou'}</a>
                         </p>
                     </form>
                 {/if}
@@ -40,7 +37,7 @@
                     <input type="hidden" name="return_to_app" value="1"/>
                     <input type="hidden" name="request_hash" value="{$request_hash}"/>
                     <button type="submit" class="btn btn-default">
-                        Return to {$appName}
+                        {lang key='oauth.returnToApp' appName=$appName}
                     </button>
                 </form>
             </div>
@@ -52,10 +49,9 @@
     </section>
 
     <section id="footer">
-        Copyright &copy; {$date_year} {$companyname}. All Rights Reserved.
+        {lang key='oauth.copyrightFooter' dateYear=$date_year companyName=$companyname}
     </section>
 
-    <script src="{$BASE_PATH_JS}/jquery.min.js"></script>
-    <script src="{$BASE_PATH_JS}/bootstrap.min.js"></script>
+    <script src="{$WEB_ROOT}/templates/{$template}/js/scripts.min.js"></script>
   </body>
 </html>
