@@ -13,24 +13,42 @@
 
     <div class="row footerbar">
         <div class="col-sm-12 col-md-8">
-            <div class="affiliate_links"><a href=https://billing.holodyn.com/submitticket.php>Submit a Ticket</a> | <a href=https://bamf.holodyn.net/cpanel>Manage Account</a> | <a href=http://www.liquidsquidstudios.com>Atlanta Graphic Design</a> | <a href=http://www.webuddha.com/>Atlanta Web Design</a> | <a href=http://www.holodyn.com/hosting>Atlanta Web Hosting</a></div>
-            <div class="copyright">Copyright &copy; 2006 - {$smarty.now|date_format:"%Y"} :: <strong>{$companyname}</strong> :: All Rights Reserved Worldwide<br />
-                <a href="affiliates.php">
-                    {$LANG.affiliatestitle}
-                </a> |
-                <a href="http://holodyn.com/web/refund-amp-privacy-policy.html" target="_blank" title="Atlanta Website Marketing, Development, Design and Support | Refund &amp; Privacy Policy">
-                    Privacy Policy
-                </a> |
-                <a href="http://holodyn.com/web/refund-policy.html" target="_blank" title="Atlanta Website Marketing, Development, Design and Support | Refund Policy">
-                    Refund Policy
-                </a> |
-                <a href="http://holodyn.com/web/terms-of-service.html" target="_blank" title="Atlanta Website Marketing, Development, Design and Support | Terms of Service">
-                    Terms of Service
-                </a>
-                <br><br>
-                <a class="brand liquid" href="http://www.liquidsquidstudios.com"><img src="templates/{$template}/img/brand-liquidsquid.png" alt="Atlanta Graphic Design | Liquid Squid Studios" /></a>
-                <a class="brand webuddha" href="http://www.webuddha.com"><img src="templates/{$template}/img/brand-webuddha.png" alt="Atlanta Internet Marketing | Webuddha.com" /></a>
-                <br><br>
+            <div class="copyright">
+                <div>
+                    <a href=https://billing.holodyn.com/submitticket.php>
+                        Submit a Ticket
+                    </a> |
+                    <a href=https://bamf.holodyn.net/cpanel>
+                        Manage Account
+                    </a> |
+                    <a href="affiliates.php">
+                        {$LANG.affiliatestitle}
+                    </a> |
+                    <a href="http://holodyn.com/web/refund-amp-privacy-policy.html" target="_blank" title="Atlanta Website Marketing, Development, Design and Support | Refund &amp; Privacy Policy">
+                        Privacy Policy
+                    </a> |
+                    <a href="http://holodyn.com/web/refund-policy.html" target="_blank" title="Atlanta Website Marketing, Development, Design and Support | Refund Policy">
+                        Refund Policy
+                    </a> |
+                    <a href="http://holodyn.com/web/terms-of-service.html" target="_blank" title="Atlanta Website Marketing, Development, Design and Support | Terms of Service">
+                        Terms of Service
+                    </a>
+                </div>
+                <div class="affiliate_links">
+                    <a href=http://atlanta-websites.com/>Atlanta Website Templates</a>
+                    | <a href=http://www.liquidsquidstudios.com>Atlanta Graphic Design</a>
+                    | <a href=http://www.webuddha.com/>Atlanta Web Design</a>
+                    | <a href=http://www.holodyn.com/hosting>Atlanta Web Hosting</a>
+                </div>
+                <div>
+                    Copyright &copy; 2006 - {$smarty.now|date_format:"%Y"} :: <strong>{$companyname}</strong> :: All Rights Reserved Worldwide
+                </div>
+                <div>
+                    <br><br>
+                    <a class="brand liquid" href="http://www.liquidsquidstudios.com"><img src="templates/{$template}/img/brand-liquidsquid.png" alt="Atlanta Graphic Design | Liquid Squid Studios" /></a>
+                    <a class="brand webuddha" href="http://www.webuddha.com"><img src="templates/{$template}/img/brand-webuddha.png" alt="Atlanta Internet Marketing | Webuddha.com" /></a>
+                    <br><br>
+                </div>
             </div>
         </div>
         <div class="col-xs-6 col-md-2">
