@@ -15,12 +15,22 @@
 
     <div class="announcement-single">
 
-        <h2>
-            <a href="{if $seofriendlyurls}{$WEB_ROOT}/announcements/{$announcement.id}/{$announcement.urlfriendlytitle}.html{else}{$smarty.server.PHP_SELF}?id={$announcement.id}{/if}">{$announcement.title}</a>
-            <span class="label label-default">
-                {"M jS"|date:$announcement.timestamp}
-            </span>
-        </h2>
+        <a href="{routePath('announcement-view', $announcement.id, $announcement.urlfriendlytitle)}" class="title">
+            {$announcement.title}
+        </a>
+
+        {if $announcement.text|strip_tags|strlen < 350}
+            <p>{$announcement.text}</p>
+        {else}
+            <p>{$announcement.summary}
+            <a href="{routePath('announcement-view', $announcement.id, $announcement.urlfriendlytitle)}" class="label label-warning">{$LANG.readmore} &raquo;</a>
+            </p>
+        {/if}
+
+        <div class="article-items">
+            <i class="fa fa-calendar"></i> {"jS M Y"|date:$announcement.timestamp}
+        </div>
+
 
         {if $announcementsFbRecommend}
             <div class="fb-like hidden-sm hidden-xs" data-layout="standard" data-href="{fqdnRoutePath('announcement-view', $announcement.id, $announcement.urlfriendlytitle)}" data-send="true" data-width="450" data-show-faces="true" data-action="recommend"></div>

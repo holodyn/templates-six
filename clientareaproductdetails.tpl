@@ -54,6 +54,39 @@
                     </div>
                     <div class="col-md-6 text-center">
 
+{* Customizations Start *}
+{if $product == "wbTicketClient for WHMCS"}
+  <div class="row" style="margin-top: 1rem;margin-bottom:1rem;">
+    <div class="col-xs-6">
+      <a href="/download-app.php?app=wbticketclient" class="btn btn-block btn-success">Download</a>
+    </div>
+    <div class="col-xs-6">
+      <a href="/download-app.php?app=wbticketclient&file=CHANGELOG.md" class="btn btn-block btn-info">View Changelog</a>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:1rem;">
+    <div class="col-xs-12">
+      <img src="/download-app.php?app=wbticketclient&file=screenshot.png" style="max-width: 100%;" />
+    </div>
+  </div>
+{/if}
+{if $product == "Annual Goal Dashboard Header for WHMCS"}
+  <div class="row" style="margin-top: 1rem;margin-bottom:1rem;">
+    <div class="col-xs-6">
+      <a href="/download-app.php?app=annualgoalmaker" class="btn btn-block btn-success">Download</a>
+    </div>
+    <div class="col-xs-6">
+      <a href="/download-app.php?app=annualgoalmaker&file=CHANGELOG.md" class="btn btn-block btn-info">View Changelog</a>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:1rem;">
+    <div class="col-xs-12">
+      <img src="/download-app.php?app=annualgoalmaker&file=screenshot.png" style="max-width: 100%;" />
+    </div>
+  </div>
+{/if}
+{* Customizations Stop *}
+
                         <h4>{$LANG.clientareahostingregdate}</h4>
                         {$regdate}
 

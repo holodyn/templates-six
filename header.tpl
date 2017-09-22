@@ -19,6 +19,12 @@
 <section id="header">
     <div class="container">
         <ul class="top-nav">
+
+            <!-- Phone -->
+            <li>
+                <a href="tel:6787999855" class="quick-nav"><i class="fa fa-phone"></i> 678-799-9855</a>
+            </li>
+
             {if $languagechangeenabled && count($locales) > 1}
                 <li>
                     <a href="#" class="choose-language" data-toggle="popover" id="languageChooser">
@@ -81,34 +87,20 @@
                 </li>
             {/if}
 
-            <!-- Shopping Cart -->
-            <div class="pull-right nav">
-                <a href="{$WEB_ROOT}/cart.php?a=view" class="quick-nav"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">{$LANG.viewcart} (</span><span id="cartItemCount">{$cartitemcount}</span><span class="hidden-xs">)</span></a>
-            </div>
-
-            <!-- Phone -->
-            <div class="pull-right nav">
-                <a href="tel:6787999855" class="quick-nav"><i class="fa fa-phone"></i> 678-799-9855</a>
-            </div>
-
-            {if $adminMasqueradingAsClient}
-                <!-- Return to admin link -->
-                <div class="alert alert-danger admin-masquerade-notice">
-                    {$LANG.adminmasqueradingasclient}<br />
-                    <a href="{$WEB_ROOT}/logout.php?returntoadmin=1" class="alert-link">{$LANG.logoutandreturntoadminarea}</a>
-                </div>
-            {elseif $adminLoggedIn}
-                <!-- Return to admin link -->
-                <div class="alert alert-danger admin-masquerade-notice">
-                    {$LANG.adminloggedin}<br />
-                    <a href="{$WEB_ROOT}/logout.php?returntoadmin=1" class="alert-link">{$LANG.returntoadminarea}</a>
-                </div>
+            {if $adminMasqueradingAsClient || $adminLoggedIn}
+                <li>
+                    <a href="{$WEB_ROOT}/logout.php?returntoadmin=1" class="btn btn-logged-in-admin" data-toggle="tooltip" data-placement="bottom" title="{if $adminMasqueradingAsClient}{$LANG.adminmasqueradingasclient} {$LANG.logoutandreturntoadminarea}{else}{$LANG.adminloggedin} {$LANG.returntoadminarea}{/if}">
+                        <i class="fa fa-sign-out"></i>
+                    </a>
+                </li>
             {/if}
         </ul>
 
-        </div>
-
-        <a href="{$WEB_ROOT}/index.php"><img style="margin: 6px;" src="{$WEB_ROOT}/templates/{$template}/img/holodyn-logo-sm.png" alt="{$companyname}" /></a>
+        {if $assetLogoPath}
+            <a href="{$WEB_ROOT}/index.php" class="logo"><img src="{$assetLogoPath}" alt="{$companyname}"></a>
+        {else}
+            <a href="{$WEB_ROOT}/index.php" class="logo logo-text">{$companyname}</a>
+        {/if}
 
     </div>
 </section>
