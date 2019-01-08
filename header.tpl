@@ -19,7 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {$headoutput}
 
 </head>
-<body>
+<body data-phone-cc-input="{$phoneNumberInputStyle}">
 
 {literal}<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFVC4RB"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>{/literal}
@@ -56,7 +56,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li>
                     <a href="#" data-toggle="popover" id="accountNotifications" data-placement="bottom">
                         {$LANG.notifications}
-                        {if count($clientAlerts) > 0}<span class="label label-info">NEW</span>{/if}
+                        {if count($clientAlerts) > 0}
+                            <span class="label label-info">{lang key='notificationsnew'}</span>
+                        {/if}
                         <b class="caret"></b>
                     </a>
                     <div id="accountNotificationsContent" class="hidden">
@@ -64,7 +66,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         {foreach $clientAlerts as $alert}
                             <li>
                                 <a href="{$alert->getLink()}">
-                                    <i class="fa fa-fw fa-{if $alert->getSeverity() == 'danger'}exclamation-circle{elseif $alert->getSeverity() == 'warning'}warning{elseif $alert->getSeverity() == 'info'}info-circle{else}check-circle{/if}"></i>
+                                    <i class="fas fa-fw fa-{if $alert->getSeverity() == 'danger'}exclamation-circle{elseif $alert->getSeverity() == 'warning'}exclamation-triangle{elseif $alert->getSeverity() == 'info'}info-circle{else}check-circle{/if}"></i>
                                     <div class="message">{$alert->getMessage()}</div>
                                 </a>
                             </li>
@@ -77,7 +79,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                 </li>
                 <li class="primary-action">
-                    <a href="{$WEB_ROOT}/logout.php" class="btn btn-action">
+                    <a href="{$WEB_ROOT}/logout.php" class="btn">
                         {$LANG.clientareanavlogout}
                     </a>
                 </li>
@@ -91,7 +93,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </li>
                 {/if}
                 <li class="primary-action">
-                    <a href="{$WEB_ROOT}/cart.php?a=view" class="btn btn-action">
+                    <a href="{$WEB_ROOT}/cart.php?a=view" class="btn">
                         {$LANG.viewcart}
                     </a>
                 </li>
@@ -100,7 +102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             {if $adminMasqueradingAsClient || $adminLoggedIn}
                 <li>
                     <a href="{$WEB_ROOT}/logout.php?returntoadmin=1" class="btn btn-logged-in-admin" data-toggle="tooltip" data-placement="bottom" title="{if $adminMasqueradingAsClient}{$LANG.adminmasqueradingasclient} {$LANG.logoutandreturntoadminarea}{else}{$LANG.adminloggedin} {$LANG.returntoadminarea}{/if}">
-                        <i class="fa fa-sign-out"></i>
+                        <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
             {/if}
@@ -172,7 +174,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </li>
                         <li>
                             <a id="btnLatestNews" href="announcements.php">
-                                <i class="fa fa-newspaper-o"></i>
+                                <i class="fa fa-newspaper"></i>
                                 <p>
                                     Our Latest Activity
                                 </p>
@@ -180,7 +182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </li>
                         <li>
                             <a id="btnGetSupport" href="submitticket.php">
-                                <i class="fa fa-support"></i>
+                                <i class="fa fa-ticket"></i>
                                 <p>
                                     Get Support
                                 </p>

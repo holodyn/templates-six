@@ -1,4 +1,4 @@
-<link href="{$WEB_ROOT}/templates/six/store/css/style.css" rel="stylesheet">
+<link href="{$WEB_ROOT}/templates/{$template}/store/css/style.css" rel="stylesheet">
 
 <div class="landing-page mail-services">
 
@@ -39,7 +39,7 @@
                             <div class="item">
                                 <h4>Incoming Email Filtering</h4>
                                 <div class="icon">
-                                    <i class="fa fa-envelope-open-o"></i>
+                                    <i class="far fa-envelope-open"></i>
                                 </div>
                                 <span>Protect your network</span>
                                 <p>Eliminate Spam & Viruses from email before they ever reach your network</p>
@@ -60,7 +60,7 @@
                             <div class="item">
                                 <h4>Outgoing Email Filtering</h4>
                                 <div class="icon">
-                                    <i class="fa fa-envelope-open"></i>
+                                    <i class="fas fa-envelope-open"></i>
                                 </div>
                                 <span>Safeguard your reputation</span>
                                 <p>Prevent Spam & Viruses from ever unknowingly leaving your network</p>
@@ -76,22 +76,26 @@
                             </div>
                         </div>
                     {/if}
-                    {if $products.archiving}
+                    {if $products.incomingarchiving || $products.outgoingarchiving || $products.incomingoutgoingarchiving}
                         <div class="{if $numberOfFeaturedProducts == 1}col-sm-6 col-sm-offset-3{elseif $numberOfFeaturedProducts == 2}col-sm-6{else}col-sm-6 col-md-4{/if}">
                             <div class="item">
                                 <h4>Email Archiving</h4>
                                 <div class="icon">
-                                    <i class="fa fa-cube"></i>
+                                    <i class="fas fa-cube"></i>
                                 </div>
                                 <span>Backup and Compliance</span>
                                 <p>Never lose an email again and ensure email data integrity for legal compliance</p>
-                                {if $products.archiving->pricing()->best()}
-                                    <div class="price">From {$products.archiving->pricing()->best()->toFullString()}/domain</div>
+                                {if $products.incomingarchiving && $products.incomingarchiving->pricing()->best()}
+                                    <div class="price">From {$products.incomingarchiving->pricing()->best()->toFullString()}/domain</div>
+                                {elseif $products.outgoingarchiving && $products.outgoingarchiving->pricing()->best()}
+                                    <div class="price">From {$products.outgoingarchiving->pricing()->best()->toFullString()}/domain</div>
+                                {else}
+                                    <div class="price">From {$products.incomingoutgoingarchiving->pricing()->best()->toFullString()}/domain</div>
                                 {/if}
                                 <a href="#" class="btn btn-learn-more" data-target="archiving">
                                     Learn more
                                 </a>
-                                <a href="#" class="btn btn-buy" data-target="archiving">
+                                <a href="#" class="btn btn-buy" data-target="incomingoutgoingarchiving">
                                     Buy
                                 </a>
                             </div>
@@ -126,7 +130,7 @@
                             <a href="#outgoing" aria-controls="outgoing" role="tab" data-toggle="tab">Outgoing Email Filtering</a>
                         </li>
                     {/if}
-                    {if $products.archiving || $inPreview}
+                    {if $products.incomingarchiving || $products.outgoingarchiving || $inPreview}
                         <li role="presentation">
                             <a href="#archiving" aria-controls="archiving" role="tab" data-toggle="tab">Email Archiving</a>
                         </li>
@@ -139,35 +143,35 @@
                             <h3>Incoming email filtering gives you all these benefits...</h3>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Full Inbox protection at competitive prices
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Extremely accurate filtering
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Easy configuration
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Increase inbound email continuity & redundancy
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Various reporting options
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Friendly interface to keep you in full control over your email
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Increase employee productivity
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Compatible with any mail server
                                 </div>
                             </div>
@@ -191,27 +195,27 @@
                             <h3>Outgoing email filtering gives you all these benefits...</h3>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     No more blacklisting
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Protect the reputation of your brand and IT-systems
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Avoid de-listing related costs
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Increase outbound email continuity and delivery
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Enhance employee productivity
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Improve abuse manageability
                                 </div>
                             </div>
@@ -232,27 +236,31 @@
                             <h3>Email archiving gives you all these benefits...</h3>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
+                                    Includes Incoming & Outcoming Email Filtering!
+                                </div>
+                                <div class="col-md-6">
+                                    <i class="fas fa-check"></i>
                                     Never lose an email again!
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Achieve legal compliance
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Improve IT system performance
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     User friendly data-protection management
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Added email continuity, journaling support, and easy re-delivery
                                 </div>
                                 <div class="col-md-6">
-                                    <i class="fa fa-check"></i>
+                                    <i class="fas fa-check"></i>
                                     Compressed, encrypted and secure archive
                                 </div>
                             </div>
@@ -288,9 +296,6 @@
                                 {if $products.outgoing}
                                     <button type="button" class="btn btn-default" data-product="outgoing">Outgoing Filtering</button>
                                 {/if}
-                                {if $products.archiving}
-                                    <button type="button" class="btn btn-default" data-product="archiving">Email Archiving</button>
-                                {/if}
                             </div>
                         {elseif $inPreview}
                             Email service products you activate will display here
@@ -316,11 +321,14 @@
                         {if $products.incoming && $products.incoming->pricing()->best()}
                             <span class="price price-incoming">{$products.incoming->pricing()->best()->toFullString()}</span>
                         {/if}
+                        {if $products.incomingarchiving && $products.incomingarchiving->pricing()->best()}
+                            <span class="price price-incomingarchiving">{$products.incomingarchiving->pricing()->best()->toFullString()}</span>
+                        {/if}
                         {if $products.outgoing && $products.outgoing->pricing()->best()}
                             <span class="price price-outgoing">{$products.outgoing->pricing()->best()->toFullString()}</span>
                         {/if}
-                        {if $products.archiving && $products.archiving->pricing()->best()}
-                            <span class="price price-archiving">{$products.archiving->pricing()->best()->toFullString()}</span>
+                        {if $products.outgoingarchiving && $products.outgoingarchiving->pricing()->best()}
+                            <span class="price price-outgoingarchiving">{$products.outgoingarchiving->pricing()->best()->toFullString()}</span>
                         {/if}
                         {if $products.incomingoutgoing && $products.incomingoutgoing->pricing()->best()}
                             <span class="price price-incomingoutgoing">{$products.incomingoutgoing->pricing()->best()->toFullString()}</span>
@@ -340,7 +348,7 @@
                 <br>
                 <form method="post" action="">
                     <select name="currency" class="form-control ssl-currency-selector" onchange="submit()" style="width:250px;">
-                        <option>Change Currency ({$activeCurrency.prefix} {$activeCurrency.code})</option>
+                        <option>{lang key="changeCurrency"} ({$activeCurrency.prefix} {$activeCurrency.code})</option>
                         {foreach $currencies as $currency}
                             <option value="{$currency['id']}">{$currency['prefix']} {$currency['code']}</option>
                         {/foreach}
@@ -390,4 +398,4 @@
 
 </div>
 
-<script src="{$WEB_ROOT}/templates/six/store/spamexperts/master.js"></script>
+<script src="{$WEB_ROOT}/templates/{$template}/store/spamexperts/master.js"></script>
