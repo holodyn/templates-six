@@ -131,19 +131,31 @@
 
 /* ------------------------------------------------------------------------ */
   #footer {
+    display: block;
     padding: 20px 0;
-    max-width: 1170px;
-    margin: 25px auto 0 auto;
     border-top: 20px solid #006687;
     color: #666;
     font-size: 0.7em;
     text-align: center;
+  }
+  .footerbar {
+    max-width: 1167px;
+    margin: 0 auto;
   }
   .footerbar .copyright{font-size:11px;color:#999;text-align:center;}
   .footerbar .affiliate_links{font-size:11px;color:#999;text-align:center;}
   .footerbar .affiliate_links a{color:#999;}
   .footerbar .AuthorizeNetSeal img{height:56px;width:70px;}
   .footerbar #siteseal img{height:83px;width:56px;}
+  .footerbar .footer-logos {
+    padding: 2rem 0;
+    text-align: center;
+  }
+  .footerbar .footer-logos > * {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 1rem;
+  }
 
 /* ------------------------------------------------------------------------ */
   .kbwrap { position:relative; }
