@@ -27,6 +27,7 @@ use WHMCS\View\Menu\Item as MenuItem;
 		$client = $client = Menu::context('client');
 		if (!$client)
 		{
+			$nav->removeChild('Store');
 			$nav->removeChild('Affiliates');
 			$nav->removeChild('Network Status');
 		  $navItem = $nav->addChild(
